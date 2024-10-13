@@ -1,15 +1,15 @@
 const questions = [
     {
-        lyrics: "We're no strangers to love, you know the rules and so do I", // 歌詞 1
-        correctSong: "Never Gonna Give You Up" // 正確的歌名 1
+        lyrics: "這歌詞 1 ...", // 歌詞 1
+        correctSong: "歌名1" // 正確的歌名
     },
     {
-        lyrics: "I got this feeling inside my bones, it goes electric, wavy when I turn it on", // 歌詞 2
-        correctSong: "Can't Stop the Feeling!" // 正確的歌名 2
+        lyrics: "這是歌詞 2 ...", // 歌詞 2
+        correctSong: "歌名2" // 正確的歌名
     },
     {
-        lyrics: "Just a small town girl, living in a lonely world", // 歌詞 3
-        correctSong: "Don't Stop Believin'" // 正確的歌名 3
+        lyrics: "這是歌詞 3 ...", // 歌詞 3
+        correctSong: "歌名3" // 正確的歌名
     }
 ];
 
