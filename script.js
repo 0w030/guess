@@ -1,23 +1,15 @@
 const questions = [
     {
-        lyrics: "看不見你的笑我怎麼睡得著，你的聲音這麼近我卻抱不到", // 歌詞 1
-        correctSong: "彩虹" // 正確的歌名
+        lyrics: "這是歌詞 1 ...", // 歌詞 1
+        correctSong: "歌名1" // 正確的歌名
     },
     {
-        lyrics: "城堡為愛守著秘密，而我為你守著回憶", // 歌詞 2
-        correctSong: "明明就" // 正確的歌名
+        lyrics: "這是歌詞 2 ...", // 歌詞 2
+        correctSong: "歌名2" // 正確的歌名
     },
     {
-        lyrics: "愛才送到，你卻已在別人懷抱", // 歌詞 3
-        correctSong: "開不了口" // 正確的歌名
-    },
-    {
-        lyrics: "我很想記得可是我記不得", // 歌詞 3
-        correctSong: "半島鐵盒" // 正確的歌名
-    },
-    {
-        lyrics: "管家是一隻會說法語舉止優雅的豬", // 歌詞 3
-        correctSong: "威廉古堡" // 正確的歌名
+        lyrics: "這是歌詞 3 ...", // 歌詞 3
+        correctSong: "歌名3" // 正確的歌名
     }
 ];
 
