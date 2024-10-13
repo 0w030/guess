@@ -52,4 +52,4 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 });
 
 // 初始載入第一題
-loadQuestion();
+window.onload = loadQuestion;
