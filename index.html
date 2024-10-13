@@ -1,70 +1,20 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>猜歌挑戰</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>猜歌挑戰</h1>
-        <div id="startButtonContainer">
-            <button id="startBtn">開始遊戲</button>
-        </div>
-        <div id="lyricContainer" class="hidden">
-            <p id="lyrics">這裡將顯示詞...</p>
-        </div>
-        <p id="guessPrompt" class="hidden">請輸入你猜的歌名：</p>
-        <input type="text" id="songInput" class="hidden" placeholder="歌名">
-        <button id="submitBtn" class="hidden">猜!</button>
-        <p id="resultMessage" class="hidden"></p>
-    </div>
-    <script>
 const questions = [
     {
-        lyrics: "看不見你的笑我怎麼睡得著，你的聲音這麼近我卻抱不到", // 歌詞 1
-        correctSong: "彩虹" // 正確的歌名
+        lyrics: "這是歌詞 1 ...", // 歌詞 1
+        correctSong: "歌名1" // 正確的歌名
     },
     {
-        lyrics: "城堡為愛守著秘密，而我為你守著回憶", // 歌詞 2
-        correctSong: "明明就" // 正確的歌名
+        lyrics: "這是歌詞 2 ...", // 歌詞 2
+        correctSong: "歌名2" // 正確的歌名
     },
     {
-        lyrics: "愛才送到，你卻已在別人懷抱", // 歌詞 3
-        correctSong: "開不了口" // 正確的歌名
+        lyrics: "這是歌詞 3 ...", // 歌詞 3
+        correctSong: "歌名3" // 正確的歌名
     },
-    {
-        lyrics: "我很想記得可是我記不得", // 歌詞 4
-        correctSong: "半島鐵盒" // 正確的歌名
-    },
-    {
-        lyrics: "管家是一隻會說法語舉止優雅的豬", // 歌詞 5
-        correctSong: "威廉古堡" // 正確的歌名
-    },
-    {
-        lyrics: "想看你看的世界，想在你夢的畫面", // 歌詞 6
-        correctSong: "回到過去" // 正確的歌名
-    },
-    {
-        lyrics: "我用漂亮的押韻形容被掠奪一空的愛情", // 歌詞 7
-        correctSong: "夜曲" // 正確的歌名
-    },
-    {
-        lyrics: "那天，我翻閱字典，查什麼字眼，形容一件事 很遙遠", // 歌詞 8
-        correctSong: "爺爺泡的茶" // 正確的歌名
-    },
-    {
-        lyrics: "只是回憶的音樂盒還旋轉著，要怎麼停呢", // 歌詞 9
-        correctSong: "說好的幸福呢" // 正確的歌名
-    },
-    {
-        lyrics: "狼牙月，伊人憔悴", // 歌詞 10
-        correctSong: "髮如雪" // 正確的歌名
-    }
+    // 可以繼續添加更多的問題
 ];
 
-let currentQuestionIndex = 0;
+let currentQuestionIndex = 0; // 當前題目索引
 let score = 0; // 計分變數
 
 // 載入當前題目
@@ -132,14 +82,10 @@ function showFinalScore() {
     }
 }
 
-// 在頁面加載時自動載入第一題
+// 在頁面加載時自動隱藏其他元素
 window.onload = () => {
     document.getElementById("lyricContainer").classList.add("hidden");
     document.getElementById("guessPrompt").classList.add("hidden");
     document.getElementById("songInput").classList.add("hidden");
     document.getElementById("submitBtn").classList.add("hidden");
 };
-
-</script>
-</body>
-</html>
