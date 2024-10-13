@@ -75,13 +75,15 @@ function loadQuestion() {
     document.getElementById("resultMessage").classList.add("hidden");
 }
 
-    document.getElementById("startBtn").addEventListener("click", () => {
+// 啟動遊戲
+document.getElementById("startBtn").addEventListener("click", () => {
     document.getElementById("startButtonContainer").classList.add("hidden");
     document.getElementById("lyricContainer").classList.remove("hidden");
     document.getElementById("guessPrompt").classList.remove("hidden");
     document.getElementById("songInput").classList.remove("hidden");
     document.getElementById("submitBtn").classList.remove("hidden");
     loadQuestion(); // 開始載入第一題
+});
 
 // 處理猜歌的按鈕點擊事件
 document.getElementById("submitBtn").addEventListener("click", () => {
@@ -136,6 +138,8 @@ window.onload = () => {
     document.getElementById("guessPrompt").classList.add("hidden");
     document.getElementById("songInput").classList.add("hidden");
     document.getElementById("submitBtn").classList.add("hidden");
+};
+
 </script>
 </body>
 </html>
