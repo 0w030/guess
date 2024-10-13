@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #282c34; /* 更改背景顏色 */
+    color: #ffffff; /* 更改文字顏色 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,21 +10,21 @@ body {
 }
 
 .container {
-    background-color: #fff;
+    background-color: #3c4043; /* 更改容器顏色 */
     padding: 40px; /* 增加內邊距 */
     border-radius: 10px; /* 增加圓角 */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* 增加陰影 */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* 增加陰影 */
     text-align: center;
     width: 400px; /* 增加容器的寬度 */
 }
 
 h1 {
-    color: #333;
+    color: #ffcc00; /* 更改標題顏色 */
     font-size: 2em; /* 增加標題字體大小 */
 }
 
 #lyricContainer {
-    background-color: #e7e7e7;
+    background-color: #4a4e54; /* 更改歌詞區域顏色 */
     border-radius: 5px;
     padding: 20px; /* 增加內邊距 */
     margin-bottom: 20px; /* 增加下方間距 */
@@ -41,7 +42,7 @@ input {
 
 button {
     padding: 15px 20px; /* 增加內邊距 */
-    background-color: #007bff;
+    background-color: #007bff; /* 更改按鈕顏色 */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -50,7 +51,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* 按鈕懸停時的顏色 */
 }
 
 #resultMessage {
