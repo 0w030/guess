@@ -32,16 +32,37 @@ const questions = [
         correctSong: "開不了口" // 正確的歌名
     },
     {
-        lyrics: "我很想記得可是我記不得", // 歌詞 3
+        lyrics: "我很想記得可是我記不得", // 歌詞 4
         correctSong: "半島鐵盒" // 正確的歌名
     },
     {
-        lyrics: "管家是一隻會說法語舉止優雅的豬", // 歌詞 3
+        lyrics: "管家是一隻會說法語舉止優雅的豬", // 歌詞 5
         correctSong: "威廉古堡" // 正確的歌名
+    },
+    {
+        lyrics: "想看你看的世界，想在你夢的畫面", // 歌詞 6
+        correctSong: "回到過去" // 正確的歌名
+    },
+    {
+        lyrics: "我用漂亮的押韻形容被掠奪一空的愛情", // 歌詞 7
+        correctSong: "夜曲" // 正確的歌名
+    },
+    {
+        lyrics: "那天，我翻閱字典，查什麼字眼，形容一件事 很遙遠", // 歌詞 8
+        correctSong: "爺爺泡的茶" // 正確的歌名
+    },
+    {
+        lyrics: "只是回憶的音樂盒還旋轉著，要怎麼停呢", // 歌詞 9
+        correctSong: "說好的幸福呢" // 正確的歌名
+    },
+    {
+        lyrics: "狼牙月，伊人憔悴", // 歌詞 10
+        correctSong: "髮如雪" // 正確的歌名
     }
 ];
 
 let currentQuestionIndex = 0;
+let score = 0; // 計分變數
 
 // 載入當前題目
 function loadQuestion() {
@@ -60,6 +81,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     if (userGuess === currentQuestion.correctSong) {
         resultMessage.textContent = "恭喜你，答對了！";
         resultMessage.style.color = "green";
+        score++; // 每答對一題分數加一
     } else {
         resultMessage.textContent = "錯誤，請再試一次！";
         resultMessage.style.color = "red";
@@ -75,11 +97,27 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                 loadQuestion();
             }, 2000); // 等待 2 秒後載入下一題
         } else {
-            resultMessage.textContent = "恭喜你完成所有挑戰！";
+            showFinalScore(); // 完成所有挑戰後顯示分數
             document.getElementById("submitBtn").disabled = true; // 禁用按鈕
         }
     }
 });
+
+// 顯示最終分數
+function showFinalScore() {
+    const resultMessage = document.getElementById("resultMessage");
+    resultMessage.textContent = `恭喜你完成所有挑戰！你的分數是：${score} 題正確。`;
+    
+    if (score >= 9) {
+        resultMessage.textContent += " 太棒了！你是歌詞大師！";
+    } else if (score >= 7) {
+        resultMessage.textContent += " 很好！繼續加油！";
+    } else if (score >= 5) {
+        resultMessage.textContent += " 不錯！再試試其他歌曲！";
+    } else {
+        resultMessage.textContent += " 加油！下次會更好！";
+    }
+}
 
 // 在頁面加載時自動載入第一題
 window.onload = loadQuestion;
