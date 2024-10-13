@@ -1,16 +1,17 @@
 const questions = [
     {
-        lyrics: "這是歌詞 1 ...", // 歌詞 1
-        correctSong: "歌名1" // 正確的歌名
+        lyrics: "就算是我不懂，能不能原諒我", // 歌詞 1
+        correctSong: "退後" // 正確的歌名
     },
     {
-        lyrics: "這是歌詞 2 ...", // 歌詞 2
-        correctSong: "歌名2" // 正確的歌名
+        lyrics: "在月光下一直找尋，那想念的身影", // 歌詞 2
+        correctSong: "軌跡" // 正確的歌名
     },
     {
-        lyrics: "這是歌詞 3 ...", // 歌詞 3
-        correctSong: "歌名3" // 正確的歌名
+        lyrics: "糖果罐裡好多顏色，微笑卻不甜了", // 歌詞 3
+        correctSong: "明明就" // 正確的歌名
     }
+    
 ];
 
 let currentQuestionIndex = 0;
