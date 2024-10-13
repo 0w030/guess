@@ -9,12 +9,15 @@
 <body>
     <div class="container">
         <h1>猜歌挑戰</h1>
-        <div id="lyricContainer">
-            <p id="lyrics">這裡將詞...</p>
+        <div id="startButtonContainer">
+            <button id="startBtn">開始遊戲</button>
         </div>
-        <p>請輸入你猜的歌名：</p>
-        <input type="text" id="songInput" placeholder="歌名">
-        <button id="submitBtn">猜!</button>
+        <div id="lyricContainer" class="hidden">
+            <p id="lyrics">這裡將顯示詞...</p>
+        </div>
+        <p id="guessPrompt" class="hidden">請輸入你猜的歌名：</p>
+        <input type="text" id="songInput" class="hidden" placeholder="歌名">
+        <button id="submitBtn" class="hidden">猜!</button>
         <p id="resultMessage" class="hidden"></p>
     </div>
     <script>
@@ -72,6 +75,14 @@ function loadQuestion() {
     document.getElementById("resultMessage").classList.add("hidden");
 }
 
+    document.getElementById("startBtn").addEventListener("click", () => {
+    document.getElementById("startButtonContainer").classList.add("hidden");
+    document.getElementById("lyricContainer").classList.remove("hidden");
+    document.getElementById("guessPrompt").classList.remove("hidden");
+    document.getElementById("songInput").classList.remove("hidden");
+    document.getElementById("submitBtn").classList.remove("hidden");
+    loadQuestion(); // 開始載入第一題
+
 // 處理猜歌的按鈕點擊事件
 document.getElementById("submitBtn").addEventListener("click", () => {
     const userGuess = document.getElementById("songInput").value.trim();
@@ -120,7 +131,11 @@ function showFinalScore() {
 }
 
 // 在頁面加載時自動載入第一題
-window.onload = loadQuestion;
+window.onload = () => {
+    document.getElementById("lyricContainer").classList.add("hidden");
+    document.getElementById("guessPrompt").classList.add("hidden");
+    document.getElementById("songInput").classList.add("hidden");
+    document.getElementById("submitBtn").classList.add("hidden");
 </script>
 </body>
 </html>
