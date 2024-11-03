@@ -23,46 +23,16 @@
     </div>
     <script>
         const questions = [
-            {
-                lyrics: "看不見你的笑我怎麼睡得著，你的聲音這麼近我卻抱不到",
-                correctSong: "彩虹"
-            },
-            {
-                lyrics: "城堡為愛守著秘密，而我為你守著回憶",
-                correctSong: "明明就"
-            },
-            {
-                lyrics: "愛才送到，你卻已在別人懷抱",
-                correctSong: "開不了口"
-            },
-            {
-                lyrics: "我很想記得可是我記不得",
-                correctSong: "半島鐵盒"
-            },
-            {
-                lyrics: "管家是一隻會說法語舉止優雅的豬",
-                correctSong: "威廉古堡"
-            },
-            {
-                lyrics: "想看你看的世界，想在你夢的畫面",
-                correctSong: "回到過去"
-            },
-            {
-                lyrics: "我用漂亮的押韻形容被掠奪一空的愛情",
-                correctSong: "夜曲"
-            },
-            {
-                lyrics: "那天，我翻閱字典，查什麼字眼，形容一件事 很遙遠",
-                correctSong: "爺爺泡的茶"
-            },
-            {
-                lyrics: "只是回憶的音樂盒還旋轉著，要怎麼停呢",
-                correctSong: "說好的幸福呢"
-            },
-            {
-                lyrics: "狼牙月，伊人憔悴",
-                correctSong: "髮如雪"
-            }
+            { lyrics: "看不見你的笑我怎麼睡得著，你的聲音這麼近我卻抱不到", correctSong: "彩虹" },
+            { lyrics: "城堡為愛守著秘密，而我為你守著回憶", correctSong: "明明就" },
+            { lyrics: "愛才送到，你卻已在別人懷抱", correctSong: "開不了口" },
+            { lyrics: "我很想記得可是我記不得", correctSong: "半島鐵盒" },
+            { lyrics: "管家是一隻會說法語舉止優雅的豬", correctSong: "威廉古堡" },
+            { lyrics: "想看你看的世界，想在你夢的畫面", correctSong: "回到過去" },
+            { lyrics: "我用漂亮的押韻形容被掠奪一空的愛情", correctSong: "夜曲" },
+            { lyrics: "那天，我翻閱字典，查什麼字眼，形容一件事 很遙遠", correctSong: "爺爺泡的茶" },
+            { lyrics: "只是回憶的音樂盒還旋轉著，要怎麼停呢", correctSong: "說好的幸福呢" },
+            { lyrics: "狼牙月，伊人憔悴", correctSong: "髮如雪" }
         ];
 
         let currentQuestionIndex = 0;
@@ -70,7 +40,9 @@
 
         function loadQuestion() {
             const currentQuestion = questions[currentQuestionIndex];
-            $("#lyrics").text(currentQuestion.lyrics);
+            $("#lyrics").fadeOut(500, function () {
+                $(this).text(currentQuestion.lyrics).fadeIn(500);
+            });
             $("#songInput").val('');
             $("#resultMessage").addClass("hidden");
         }
@@ -97,8 +69,8 @@
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
                     setTimeout(() => {
-                        loadQuestion();
                         $resultMessage.fadeOut();
+                        loadQuestion();
                     }, 2000);
                 } else {
                     showFinalScore();
