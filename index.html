@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>猜歌挑戰</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -22,124 +23,107 @@
     </div>
     <script>
         const questions = [
-    {
-        lyrics: "看不見你的笑我怎麼睡得著，你的聲音這麼近我卻抱不到", // 歌詞 1
-        correctSong: "彩虹" // 正確的歌名
-    },
-    {
-        lyrics: "城堡為愛守著秘密，而我為你守著回憶", // 歌詞 2
-        correctSong: "明明就" // 正確的歌名
-    },
-    {
-        lyrics: "愛才送到，你卻已在別人懷抱", // 歌詞 3
-        correctSong: "開不了口" // 正確的歌名
-    },
-    {
-        lyrics: "我很想記得可是我記不得", // 歌詞 4
-        correctSong: "半島鐵盒" // 正確的歌名
-    },
-    {
-        lyrics: "管家是一隻會說法語舉止優雅的豬", // 歌詞 5
-        correctSong: "威廉古堡" // 正確的歌名
-    },
-    {
-        lyrics: "想看你看的世界，想在你夢的畫面", // 歌詞 6
-        correctSong: "回到過去" // 正確的歌名
-    },
-    {
-        lyrics: "我用漂亮的押韻形容被掠奪一空的愛情", // 歌詞 7
-        correctSong: "夜曲" // 正確的歌名
-    },
-    {
-        lyrics: "那天，我翻閱字典，查什麼字眼，形容一件事 很遙遠", // 歌詞 8
-        correctSong: "爺爺泡的茶" // 正確的歌名
-    },
-    {
-        lyrics: "只是回憶的音樂盒還旋轉著，要怎麼停呢", // 歌詞 9
-        correctSong: "說好的幸福呢" // 正確的歌名
-    },
-    {
-        lyrics: "狼牙月，伊人憔悴", // 歌詞 10
-        correctSong: "髮如雪" // 正確的歌名
-    }
-];
+            {
+                lyrics: "看不見你的笑我怎麼睡得著，你的聲音這麼近我卻抱不到",
+                correctSong: "彩虹"
+            },
+            {
+                lyrics: "城堡為愛守著秘密，而我為你守著回憶",
+                correctSong: "明明就"
+            },
+            {
+                lyrics: "愛才送到，你卻已在別人懷抱",
+                correctSong: "開不了口"
+            },
+            {
+                lyrics: "我很想記得可是我記不得",
+                correctSong: "半島鐵盒"
+            },
+            {
+                lyrics: "管家是一隻會說法語舉止優雅的豬",
+                correctSong: "威廉古堡"
+            },
+            {
+                lyrics: "想看你看的世界，想在你夢的畫面",
+                correctSong: "回到過去"
+            },
+            {
+                lyrics: "我用漂亮的押韻形容被掠奪一空的愛情",
+                correctSong: "夜曲"
+            },
+            {
+                lyrics: "那天，我翻閱字典，查什麼字眼，形容一件事 很遙遠",
+                correctSong: "爺爺泡的茶"
+            },
+            {
+                lyrics: "只是回憶的音樂盒還旋轉著，要怎麼停呢",
+                correctSong: "說好的幸福呢"
+            },
+            {
+                lyrics: "狼牙月，伊人憔悴",
+                correctSong: "髮如雪"
+            }
+        ];
 
+        let currentQuestionIndex = 0;
+        let score = 0;
 
-let currentQuestionIndex = 0; // 當前題目索引
-let score = 0; // 計分變數
-
-// 載入當前題目
-function loadQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
-    document.getElementById("lyrics").textContent = currentQuestion.lyrics;
-    document.getElementById("songInput").value = '';
-    document.getElementById("resultMessage").classList.add("hidden");
-}
-
-// 啟動遊戲
-document.getElementById("startBtn").addEventListener("click", () => {
-    document.getElementById("startButtonContainer").classList.add("hidden");
-    document.getElementById("lyricContainer").classList.remove("hidden");
-    document.getElementById("guessPrompt").classList.remove("hidden");
-    document.getElementById("songInput").classList.remove("hidden");
-    document.getElementById("submitBtn").classList.remove("hidden");
-    loadQuestion(); // 開始載入第一題
-});
-
-// 處理猜歌的按鈕點擊事件
-document.getElementById("submitBtn").addEventListener("click", () => {
-    const userGuess = document.getElementById("songInput").value.trim();
-    const currentQuestion = questions[currentQuestionIndex];
-    const resultMessage = document.getElementById("resultMessage");
-
-    if (userGuess === currentQuestion.correctSong) {
-        resultMessage.textContent = "恭喜你，答對了！";
-        resultMessage.style.color = "green";
-        score++; // 每答對一題分數加一
-    } else {
-        resultMessage.textContent = "錯誤，請再試一次！";
-        resultMessage.style.color = "red";
-    }
-
-    resultMessage.classList.remove("hidden");
-
-    // 如果猜對，載入下一題
-    if (userGuess === currentQuestion.correctSong) {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-            setTimeout(() => {
-                loadQuestion();
-            }, 2000); // 等待 2 秒後載入下一題
-        } else {
-            showFinalScore(); // 完成所有挑戰後顯示分數
-            document.getElementById("submitBtn").disabled = true; // 禁用按鈕
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            $("#lyrics").text(currentQuestion.lyrics);
+            $("#songInput").val('');
+            $("#resultMessage").addClass("hidden");
         }
-    }
-});
 
-// 顯示最終分數
-function showFinalScore() {
-    const resultMessage = document.getElementById("resultMessage");
-    resultMessage.textContent = `恭喜你完成所有挑戰！你的分數是：${score} 題正確。`;
-    
-    if (score >= 9) {
-        resultMessage.textContent += " 太棒了！你是歌詞大師！";
-    } else if (score >= 7) {
-        resultMessage.textContent += " 很好！繼續加油！";
-    } else if (score >= 5) {
-        resultMessage.textContent += " 不錯！再試試其他歌曲！";
-    } else {
-        resultMessage.textContent += " 加油！下次會更好！";
-    }
-}
+        $("#startBtn").click(function () {
+            $("#startButtonContainer").addClass("hidden");
+            $("#lyricContainer, #guessPrompt, #songInput, #submitBtn").removeClass("hidden");
+            loadQuestion();
+        });
 
-// 在頁面加載時自動隱藏其他元素
-window.onload = () => {
-    document.getElementById("lyricContainer").classList.add("hidden");
-    document.getElementById("guessPrompt").classList.add("hidden");
-    document.getElementById("songInput").classList.add("hidden");
-    document.getElementById("submitBtn").classList.add("hidden");
-};
-</script>
+        $("#submitBtn").click(function () {
+            const userGuess = $("#songInput").val().trim();
+            const currentQuestion = questions[currentQuestionIndex];
+            const $resultMessage = $("#resultMessage");
+
+            if (userGuess === currentQuestion.correctSong) {
+                $resultMessage.text("恭喜你，答對了！").css("color", "green").fadeIn();
+                score++;
+            } else {
+                $resultMessage.text("錯誤，請再試一次！").css("color", "red").fadeIn();
+            }
+
+            if (userGuess === currentQuestion.correctSong) {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    setTimeout(() => {
+                        loadQuestion();
+                        $resultMessage.fadeOut();
+                    }, 2000);
+                } else {
+                    showFinalScore();
+                    $("#submitBtn").prop("disabled", true);
+                }
+            }
+        });
+
+        function showFinalScore() {
+            const $resultMessage = $("#resultMessage");
+            $resultMessage.text(`恭喜你完成所有挑戰！你的分數是：${score} 題正確。`);
+            if (score >= 9) {
+                $resultMessage.append(" 太棒了！你是歌詞大師！");
+            } else if (score >= 7) {
+                $resultMessage.append(" 很好！繼續加油！");
+            } else if (score >= 5) {
+                $resultMessage.append(" 不錯！再試試其他歌曲！");
+            } else {
+                $resultMessage.append(" 加油！下次會更好！");
+            }
+        }
+
+        $(window).on("load", function() {
+            $("#lyricContainer, #guessPrompt, #songInput, #submitBtn").addClass("hidden");
+        });
+    </script>
 </body>
 </html>
